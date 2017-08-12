@@ -10,5 +10,6 @@ namespace IBuisnessLogicLayer.Entities
     {
         public string BuyerName { get; set; }
         public decimal FullPrice { get; set; }
+        public ICollection<ProductEntity> Products { get; set; }
     }
 }

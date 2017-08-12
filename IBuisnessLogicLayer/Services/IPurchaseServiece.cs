@@ -10,8 +10,8 @@ namespace IBuisnessLogicLayer
     public interface IPurchaseServiece
     {
         IEnumerable<ProductEntity> GetAllProducts();
-        ProductEntity GetProduct(int id);
         void AddProduct(ProductEntity product);
         void DeleteProduct(ProductEntity product);
+        void Buy();
     }
 }

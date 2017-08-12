@@ -6,29 +6,74 @@ using System.Threading.Tasks;
 using IDataAccessLayer.Repos;
 using IDataAccessLayer;
 using System.Linq.Expressions;
+using System.Data.Entity;
+using ORMEF;
 
 namespace DataAccessLayer
 {
     public class ProductRep : IRep<DALProduct>
     {
-        public void Create(DALProduct e)
+        private readonly DbContext context;
+        public ProductRep(DbContext context)
         {
-            throw new NotImplementedException();
+            this.context = context;
+        }
+        public void Create(DALProduct pr)
+        {
+            Product newProduct = new Product()
+            {
+                Name = pr.ProductsName,
+                Description = pr.Desription,
+                Price = pr.Price,
+                Category = pr.Category,
+                Amount = pr.Amount
+            };
+
+            context.Set<Product>().Add(newProduct);
         }
 
-        public void Delete(DALProduct e)
+        public void Delete(DALProduct pr)
         {
-            throw new NotImplementedException();
+            Product productToDelete = new Product()
+            {
+                
+                Name = pr.ProductsName,
+                Description = pr.Desription,
+                Price = pr.Price,
+                Category = pr.Category,
+                Amount = pr.Amount
+            };
+
+            context.Set<Product>().FirstOrDefault(prod =>prod.Id==productToDelete.Id);
+
         }
 
         public IEnumerable<DALProduct> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Set<Product>().Select(i => new DALProduct()
+            {
+               
+                ProductsName = i.Name,
+                Desription = i.Description,
+                Price = i.Price,
+                Amount = i.Amount,
+                Category = i.Category
+            
+            });
         }
 
-        public DALProduct GetById(int key)
+        public DALProduct GetById(int id)
         {
-            throw new NotImplementedException();
+            var product = context.Set<Product>().FirstOrDefault(prod => prod.Id == id);
+            if (ReferenceEquals(product, null)) throw new InvalidOperationException();
+            return new DALProduct()
+            {
+                ProductsName = product.Name,
+                Desription = product.Description,
+                Price = product.Price,
+                Amount = product.Amount,
+                Category = product.Category
+            };
         }
 
         public DALProduct GetByPredicate(Expression<Func<DALProduct, bool>> f)
@@ -36,9 +81,13 @@ namespace DataAccessLayer
             throw new NotImplementedException();
         }
 
-        public void Update(DALProduct entity)
+        public void Update(DALProduct product)
         {
-            throw new NotImplementedException();
+            
+        }
+        public void Commit()
+        {
+            context.SaveChanges();
         }
     }
 }

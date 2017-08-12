@@ -31,7 +31,7 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NameOfBuyer" Type="int" Nullable="false" />
+    <Property Name="NameOfBuyer" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="PurchaseProduct">
     <End Role="Purchase" Type="ShopModel.Store.Purchases" Multiplicity="1" />
@@ -75,7 +75,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameOfBuyer" Type="Int32" Nullable="false" />
+          <Property Name="NameOfBuyer" Type="String" Nullable="false" />
           <NavigationProperty Name="Products" Relationship="ShopModel.PurchaseProduct" FromRole="Purchase" ToRole="Product" />
         </EntityType>
         <Association Name="PurchaseProduct">

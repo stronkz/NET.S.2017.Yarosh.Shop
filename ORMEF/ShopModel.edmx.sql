@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/11/2017 11:57:55
--- Generated from EDMX file: c:\users\alexy\documents\visual studio 2017\Projects\ORMEF\ORMEF\ShopModel.edmx
+-- Date Created: 08/12/2017 18:06:56
+-- Generated from EDMX file: C:\Users\alexy\documents\visual studio 2017\Projects\ORMEF\ORMEF\ShopModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,20 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_PurchaseProduct]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_PurchaseProduct];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Products]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Products];
+GO
+IF OBJECT_ID(N'[dbo].[Purchases]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Purchases];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -43,7 +52,7 @@ GO
 -- Creating table 'Purchases'
 CREATE TABLE [dbo].[Purchases] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [NameOfBuyer] int  NOT NULL
+    [NameOfBuyer] nvarchar(max)  NOT NULL
 );
 GO
 

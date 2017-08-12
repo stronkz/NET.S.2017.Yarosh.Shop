@@ -5,29 +5,43 @@ using System.Text;
 using System.Threading.Tasks;
 using IBuisnessLogicLayer;
 using IBuisnessLogicLayer.Entities;
+using IDataAccessLayer.Repos;
+using IDataAccessLayer;
+using BuisnessLogicLayer.Mappers;
 
 namespace BuisnessLogicLayer.ConcreateServices
 {
     class PurchaseService : IPurchaseServiece
     {
+        private readonly PurchaseEntity purchase;
+        private readonly IRep<DALPurchase> repository;
+        
+
+        public PurchaseService(string buyerName, IRep<DALPurchase> repository)
+        {
+            this.repository = repository;
+            purchase = new PurchaseEntity() {BuyerName=buyerName};
+        }
+
         public void AddProduct(ProductEntity product)
         {
-            throw new NotImplementedException();
+            purchase.Products.Add(product);
+            
         }
 
         public void DeleteProduct(ProductEntity product)
         {
-            throw new NotImplementedException();
+            purchase.Products.Remove(product);
         }
 
         public IEnumerable<ProductEntity> GetAllProducts()
         {
-            throw new NotImplementedException();
+            return purchase.Products;
         }
 
-        public ProductEntity GetProduct(int id)
+        public void Buy()
         {
-            throw new NotImplementedException();
+            repository.Create(purchase.ToDallPurchase());
         }
     }
 }

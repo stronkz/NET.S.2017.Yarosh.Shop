@@ -8,6 +8,8 @@ namespace IDataAccessLayer
 {
     public class DALPurchase
     {
+        public int Id { get; set; }
         public string  BuyerName { get; set; }
+        public ICollection<DALProduct> Products { get; set; }
     }
 }

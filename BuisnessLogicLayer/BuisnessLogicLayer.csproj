@@ -42,12 +42,17 @@
   <ItemGroup>
     <Compile Include="ConcreateServices\PurchaseService.cs" />
     <Compile Include="ConcreateServices\ShopService.cs" />
+    <Compile Include="Mappers\DallAndBallObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IBuisnessLogicLayer\IBuisnessLogicLayer.csproj">
       <Project>{00505989-8c6f-4bad-bf31-d6e8285498a3}</Project>
       <Name>IBuisnessLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IDataAccessLayer\IDataAccessLayer.csproj">
+      <Project>{3680a1e0-a46b-4d7f-8a83-b31c7532b3d9}</Project>
+      <Name>IDataAccessLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
