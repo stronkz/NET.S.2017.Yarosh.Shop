@@ -19,7 +19,7 @@ namespace BuisnessLogicLayer.Mappers
                 Amount = entity.Amount,
                 Price = entity.Price,
                 Category = entity.Category
-
+                
             };
         } 
         public static ProductEntity ToBalProduct(this DALProduct entity)
@@ -38,7 +38,7 @@ namespace BuisnessLogicLayer.Mappers
             return new DALPurchase()
             {
                 BuyerName = purchase.BuyerName,
-                Products = (ICollection<DALProduct>)purchase.Products.Select(pr=>pr.ToDalProduct())
+                Products = purchase.Products.Select(i=>i.ToDalProduct()).ToList()
             };
         }
         public static PurchaseEntity ToBalPurchase(this DALPurchase purchase)
@@ -46,7 +46,7 @@ namespace BuisnessLogicLayer.Mappers
             return new PurchaseEntity()
             {
                 BuyerName = purchase.BuyerName,
-                Products = (ICollection<ProductEntity>)purchase.Products.Select(pr => pr.ToBalProduct())
+                Products = purchase.Products.Select(pr => pr.ToBalProduct()).ToList()
             };
         }
     }

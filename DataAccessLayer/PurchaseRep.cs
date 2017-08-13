@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 using System.Linq.Expressions;
 using ORMEF;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace DataAccessLayer
 {
-    class PurchaseRep : IRep<DALPurchase>
+    public class PurchaseRep : IRep<DALPurchase>
     {
         private readonly DbContext context;
         public PurchaseRep(DbContext context)
@@ -22,7 +24,16 @@ namespace DataAccessLayer
         {
             Purchase purch = new Purchase()
             {
-                NameOfBuyer = purchase.BuyerName
+                NameOfBuyer = purchase.BuyerName,
+                Products = purchase.Products.Select(i=>new Product()
+                {
+                    Name = i.ProductsName,
+                    Category = i.Category,
+                    Description = i.Desription,
+                    Price = i.Price,
+                    Amount = i.Amount,
+                   
+                }).ToList()
             };
 
             context.Set<Purchase>().Add(purch);
@@ -55,18 +66,28 @@ namespace DataAccessLayer
             };
         }
 
-        public DALPurchase GetByPredicate(Expression<Func<DALPurchase, bool>> f)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Update(DALPurchase entity)
         {
             
         }
         public void Commit()
         {
-            context.SaveChanges();
+            try
+            {
+                context.SaveChanges();
+            }
+
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Debug.Write(string.Format("Property: {0} Error: {1}", validationError.PropertyName,
+                            validationError.ErrorMessage));
+                    }
+                }
+            }
         }
     }
 }

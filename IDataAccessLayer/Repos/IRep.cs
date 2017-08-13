@@ -11,7 +11,6 @@ namespace IDataAccessLayer.Repos
     {
         IEnumerable<T> GetAll();
         T GetById(int id);
-        T GetByPredicate(Expression<Func<T, bool>> func);
         void Create(T pr);
         void Delete(T pr);
         void Update(T pr);

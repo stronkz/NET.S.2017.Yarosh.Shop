@@ -76,11 +76,6 @@ namespace DataAccessLayer
             };
         }
 
-        public DALProduct GetByPredicate(Expression<Func<DALProduct, bool>> f)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Update(DALProduct product)
         {
             

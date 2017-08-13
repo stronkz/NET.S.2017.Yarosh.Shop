@@ -1,5 +1,7 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,17 +13,19 @@ using BuisnessLogicLayer.Mappers;
 
 namespace BuisnessLogicLayer.ConcreateServices
 {
-    class PurchaseService : IPurchaseServiece
+    public class PurchaseService : IPurchaseServiece
     {
         private readonly PurchaseEntity purchase;
         private readonly IRep<DALPurchase> repository;
         
 
-        public PurchaseService(string buyerName, IRep<DALPurchase> repository)
+        public PurchaseService(IRep<DALPurchase> repository)
         {
             this.repository = repository;
-            purchase = new PurchaseEntity() {BuyerName=buyerName};
+            purchase=new PurchaseEntity(){BuyerName = "ddddd",Products =new List<ProductEntity>()};
         }
+
+       
 
         public void AddProduct(ProductEntity product)
         {
@@ -42,6 +46,7 @@ namespace BuisnessLogicLayer.ConcreateServices
         public void Buy()
         {
             repository.Create(purchase.ToDallPurchase());
+            repository.Commit();
         }
     }
 }

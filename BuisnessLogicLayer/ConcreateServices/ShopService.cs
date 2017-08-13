@@ -10,7 +10,7 @@ using IDataAccessLayer.Repos;
 using BuisnessLogicLayer.Mappers;
 namespace BuisnessLogicLayer.ConcreateServices
 {
-    class ShopService : IShopServiece
+    public  class ShopService : IShopServiece
     {
         private readonly IRep<DALProduct> productService;
         private readonly IRep<DALPurchase> purchaseService;
