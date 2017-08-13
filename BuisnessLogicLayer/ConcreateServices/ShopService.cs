@@ -44,7 +44,7 @@ namespace BuisnessLogicLayer.ConcreateServices
 
         public IEnumerable<PurchaseEntity> GetAllPurchases()
         {
-            return purchaseService.GetAll().Select(i=>i.ToBalPurchase());
+            return purchaseService.GetAll().Select(i=>i.ToBalPurchase(productService));
         }
 
         public ProductEntity GetProduct(int id)
@@ -54,8 +54,13 @@ namespace BuisnessLogicLayer.ConcreateServices
 
         public PurchaseEntity GetPurchase(int id)
         {
-            return purchaseService.GetById(id).ToBalPurchase();
+            return purchaseService.GetById(id).ToBalPurchase(productService);
         }
 
+        public void RegisterPurchase(PurchaseEntity purch)
+        {
+            purchaseService.Create(purch.ToDallPurchase());
+            purchaseService.Commit();
+        }
     }
 }

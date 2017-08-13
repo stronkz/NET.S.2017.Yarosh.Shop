@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConcreateServices\PurchaseService.cs" />
     <Compile Include="ConcreateServices\ShopService.cs" />
     <Compile Include="Mappers\DallAndBallObjectExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +54,9 @@
       <Project>{3680a1e0-a46b-4d7f-8a83-b31c7532b3d9}</Project>
       <Name>IDataAccessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

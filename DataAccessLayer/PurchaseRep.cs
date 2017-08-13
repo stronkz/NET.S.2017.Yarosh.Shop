@@ -25,15 +25,7 @@ namespace DataAccessLayer
             Purchase purch = new Purchase()
             {
                 NameOfBuyer = purchase.BuyerName,
-                Products = purchase.Products.Select(i=>new Product()
-                {
-                    Name = i.ProductsName,
-                    Category = i.Category,
-                    Description = i.Desription,
-                    Price = i.Price,
-                    Amount = i.Amount,
-                   
-                }).ToList()
+               
             };
 
             context.Set<Purchase>().Add(purch);

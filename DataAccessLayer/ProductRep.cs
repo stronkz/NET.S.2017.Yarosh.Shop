@@ -25,8 +25,10 @@ namespace DataAccessLayer
                 Name = pr.ProductsName,
                 Description = pr.Desription,
                 Price = pr.Price,
-                Category = pr.Category,
-                Amount = pr.Amount
+                Category = context.Set<Category>().FirstOrDefault(i=>i.Name==pr.Category),
+                Amount = pr.Amount,
+                Purchase = context.Set<Purchase>().FirstOrDefault(i=>i.NameOfBuyer==pr.Buyer)
+
             };
 
             context.Set<Product>().Add(newProduct);
@@ -40,8 +42,9 @@ namespace DataAccessLayer
                 Name = pr.ProductsName,
                 Description = pr.Desription,
                 Price = pr.Price,
-                Category = pr.Category,
-                Amount = pr.Amount
+                Category = context.Set<Category>().FirstOrDefault(i => i.Name == pr.Category),
+                Amount = pr.Amount,
+                Purchase = context.Set<Purchase>().FirstOrDefault(i=>i.NameOfBuyer==pr.Buyer)
             };
 
             context.Set<Product>().FirstOrDefault(prod =>prod.Id==productToDelete.Id);
@@ -57,8 +60,9 @@ namespace DataAccessLayer
                 Desription = i.Description,
                 Price = i.Price,
                 Amount = i.Amount,
-                Category = i.Category
-            
+                Category = i.Category.Name,
+                Buyer = i.Purchase.NameOfBuyer
+                
             });
         }
 
@@ -72,7 +76,9 @@ namespace DataAccessLayer
                 Desription = product.Description,
                 Price = product.Price,
                 Amount = product.Amount,
-                Category = product.Category
+                Category = product.Category.Name,
+                Buyer = product.Purchase.NameOfBuyer
+
             };
         }
 

@@ -49,6 +49,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs">
+      <DependentUpon>ShopModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>ShopModel.tt</DependentUpon>
     </Compile>
@@ -95,6 +98,7 @@
       <LastGenOutput>ShopModel.cs</LastGenOutput>
       <DependentUpon>ShopModel.edmx</DependentUpon>
     </Content>
+    <Content Include="ShopModelUpdate.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

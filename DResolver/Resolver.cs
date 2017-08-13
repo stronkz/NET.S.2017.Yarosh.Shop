@@ -29,7 +29,7 @@ namespace DResolver
                 kernel.Bind<DbContext>().To<ShopModelContainer>().InSingletonScope();
             kernel.Bind<IRep<DALProduct>>().To<ProductRep>().InSingletonScope();
 
-            kernel.Bind<IPurchaseServiece>().To<PurchaseService>();
+           
             kernel.Bind<IShopServiece>().To<ShopService>();
         }
     }

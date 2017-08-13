@@ -1,15 +1,16 @@
 ﻿using IBuisnessLogicLayer.Entities;
 using IDataAccessLayer;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using IDataAccessLayer.Repos;
 
 namespace BuisnessLogicLayer.Mappers
 {
     public static class DallAndBallObjectExtensions
     {
+        
         public static DALProduct ToDalProduct(this ProductEntity entity)
         {
             return new DALProduct()
@@ -18,7 +19,8 @@ namespace BuisnessLogicLayer.Mappers
                 Desription = entity.Description,
                 Amount = entity.Amount,
                 Price = entity.Price,
-                Category = entity.Category
+                Category = entity.Category,
+                Buyer = entity.Buyer
                 
             };
         } 
@@ -30,7 +32,9 @@ namespace BuisnessLogicLayer.Mappers
                 Description = entity.Desription,
                 Amount = entity.Amount,
                 Price = entity.Price,
-                Category = entity.Category
+                Category = entity.Category,
+                Buyer = entity.Buyer
+                
             };
         }
         public static DALPurchase ToDallPurchase(this PurchaseEntity purchase)
@@ -38,15 +42,16 @@ namespace BuisnessLogicLayer.Mappers
             return new DALPurchase()
             {
                 BuyerName = purchase.BuyerName,
-                Products = purchase.Products.Select(i=>i.ToDalProduct()).ToList()
+                
             };
         }
-        public static PurchaseEntity ToBalPurchase(this DALPurchase purchase)
+        public static PurchaseEntity ToBalPurchase(this DALPurchase purchase,IRep<DALProduct> context)
         {
+            var pr = context;
             return new PurchaseEntity()
             {
                 BuyerName = purchase.BuyerName,
-                Products = purchase.Products.Select(pr => pr.ToBalProduct()).ToList()
+                Products = pr.GetAll().Where(i=>i.Buyer==purchase.BuyerName).Select(i=>i.ToBalProduct()).ToList()
             };
         }
     }

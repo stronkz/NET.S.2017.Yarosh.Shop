@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Entities\ProductEntity.cs" />
     <Compile Include="Entities\PurchaseEntity.cs" />
-    <Compile Include="Services\IPurchaseServiece.cs" />
     <Compile Include="Services\IShopServiece.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

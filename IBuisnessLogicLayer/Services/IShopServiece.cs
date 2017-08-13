@@ -16,5 +16,6 @@ namespace IBuisnessLogicLayer
         void DeleteProductFromShop(ProductEntity product);
         IEnumerable<ProductEntity> GetAllProducts();
         ProductEntity GetProduct(int id);
+        void RegisterPurchase(PurchaseEntity purch);
     }
 }
