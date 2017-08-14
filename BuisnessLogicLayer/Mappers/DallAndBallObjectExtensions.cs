@@ -8,9 +8,13 @@ using IDataAccessLayer.Repos;
 
 namespace BuisnessLogicLayer.Mappers
 {
-    public static class DallAndBallObjectExtensions
+    internal static class DallAndBallObjectExtensions
     {
-        
+        /// <summary>
+        /// Converte bal entity to entity on dal
+        /// </summary>
+        /// <param name="entity">entity to be converted</param>
+        /// <returns>dal entity</returns>
         public static DALProduct ToDalProduct(this ProductEntity entity)
         {
             return new DALProduct()
@@ -23,7 +27,12 @@ namespace BuisnessLogicLayer.Mappers
                 Buyer = entity.Buyer
                 
             };
-        } 
+        }
+        /// <summary>
+        /// Converte dal entity to entity on bal
+        /// </summary>
+        /// <param name="entity">entity to be converted</param>
+        /// <returns>bal entity</returns>
         public static ProductEntity ToBalProduct(this DALProduct entity)
         {
             return new ProductEntity()
@@ -37,6 +46,11 @@ namespace BuisnessLogicLayer.Mappers
                 
             };
         }
+        /// <summary>
+        /// Converte bal entity to entity on dal
+        /// </summary>
+        /// <param name="entity">entity to be converted</param>
+        /// <returns>dal entity</returns>
         public static DALPurchase ToDallPurchase(this PurchaseEntity purchase)
         {
             return new DALPurchase()
@@ -45,6 +59,11 @@ namespace BuisnessLogicLayer.Mappers
                 
             };
         }
+        /// <summary>
+        /// Converte dal entity to entity on bal
+        /// </summary>
+        /// <param name="entity">entity to be converted</param>
+        /// <returns>bal entity</returns>
         public static PurchaseEntity ToBalPurchase(this DALPurchase purchase,IRep<DALProduct> context)
         {
             var pr = context;

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DEB1DF48-08F9-4461-B0BE-76D0A6A49E8D}</ProjectGuid>
+    <ProjectGuid>{EB95DEDC-BCA6-450B-B205-050D4B5BC2C1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BuisnessLogicLayer</RootNamespace>
-    <AssemblyName>BuisnessLogicLayer</AssemblyName>
+    <RootNamespace>ShopExceptions</RootNamespace>
+    <AssemblyName>ShopExceptions</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,26 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConcreateServices\ShopService.cs" />
-    <Compile Include="Mappers\DallAndBallObjectExtensions.cs" />
+    <Compile Include="Expections.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IBuisnessLogicLayer\IBuisnessLogicLayer.csproj">
-      <Project>{00505989-8c6f-4bad-bf31-d6e8285498a3}</Project>
-      <Name>IBuisnessLogicLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IDataAccessLayer\IDataAccessLayer.csproj">
-      <Project>{3680a1e0-a46b-4d7f-8a83-b31c7532b3d9}</Project>
-      <Name>IDataAccessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ShopExceptions\ShopExceptions.csproj">
-      <Project>{eb95dedc-bca6-450b-b205-050d4b5bc2c1}</Project>
-      <Name>ShopExceptions</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

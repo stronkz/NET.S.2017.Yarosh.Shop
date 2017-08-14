@@ -18,19 +18,21 @@ namespace ConsoleShop
         private static readonly IKernel resolver;
         static void Main(string[] args)
         {
-            //PurchaseEntity purch1 = new PurchaseEntity() { BuyerName = "buyer1" };
+            PurchaseEntity purch1 = new PurchaseEntity() { BuyerName = "buyer1" };
 
-            //PurchaseEntity purch2 = new PurchaseEntity() { BuyerName = "buyer2" };
+            PurchaseEntity purch2 = new PurchaseEntity() { BuyerName = "buyer2" };
 
-            //ProductEntity pr1=new ProductEntity()
-            //     { Amount = 4,Category = "toys",Description = "prod1",Price = 10.0M,ProductsName = "PRODUCT1",Buyer = "buyer1" };
-            //ProductEntity pr2 = new ProductEntity()
-            //     { Amount = 1, Category = "toys", Description = "prod2", Price = 20.0M, ProductsName = "PRODUCT2", Buyer = "buyer1" };
+            ProductEntity pr1 = new ProductEntity()
+            { Amount = 4, Category = "toys", Description = "prod1", Price = 10.0M, ProductsName = "PRODUCT1", Buyer = "buyer1" };
+            ProductEntity pr2 = new ProductEntity()
+            { Amount = 1, Category = "toys", Description = "prod2", Price = 20.0M, ProductsName = "PRODUCT2", Buyer = "buyer1" };
 
-            //ProductEntity pr3 = new ProductEntity()
-            //    { Amount = 10, Category = "fruits", Description = "prod3", Price = 30.0M, ProductsName = "PRODUCT3", Buyer = "buyer2" };
+            ProductEntity pr3 = new ProductEntity()
+            { Amount = 10, Category = "fruits", Description = "prod3", Price = 30.0M, ProductsName = "PRODUCT3", Buyer = "buyer2" };
 
-           
+            ProductEntity prtodel = new ProductEntity()
+                { Amount = 4, Category = "toys", Description = "proddd1", Price = 10.0M, ProductsName = "PRODUCTToDELETE", Buyer = "buyer1" };
+
 
             var shop = resolver.Get<IShopServiece>();
             
@@ -57,6 +59,11 @@ namespace ConsoleShop
                 }
                
             }
+            //Console.WriteLine(shop.GetProduct(2).ProductsName);
+            Console.WriteLine(shop.GetPurchase(4).BuyerName);
+
+            //shop.DeleteProductFromShop(pr2);
+            shop.DeleteProductFromShop(prtodel);
             Console.ReadKey();
         }
 

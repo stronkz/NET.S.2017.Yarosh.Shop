@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleShop", "ConsoleShop\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DResolver", "DResolver\DResolver.csproj", "{323207AE-2E5D-400A-B4A6-35350FA0FBD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopExceptions", "ShopExceptions\ShopExceptions.csproj", "{EB95DEDC-BCA6-450B-B205-050D4B5BC2C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{323207AE-2E5D-400A-B4A6-35350FA0FBD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{323207AE-2E5D-400A-B4A6-35350FA0FBD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{323207AE-2E5D-400A-B4A6-35350FA0FBD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB95DEDC-BCA6-450B-B205-050D4B5BC2C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB95DEDC-BCA6-450B-B205-050D4B5BC2C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB95DEDC-BCA6-450B-B205-050D4B5BC2C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB95DEDC-BCA6-450B-B205-050D4B5BC2C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
